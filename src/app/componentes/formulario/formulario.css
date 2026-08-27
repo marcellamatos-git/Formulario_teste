@@ -1,0 +1,145 @@
+/* ==========================================================================
+   FORMULÁRIO PROFISSIONAL DE EMPRESA (CORPORATE DASHBOARD)
+   ========================================================================== */
+
+/* Importação da fonte moderna Inter do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Reset local e container do formulário */
+.container {
+  max-width: 480px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  border: 1px solid #eaecf0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Título principal do cartão */
+h2 {
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+  color: #101828;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Subtítulo ou cabeçalho opcional */
+.container::before {
+  content: "Preencha as informações para continuar";
+  display: block;
+  text-align: center;
+  color: #667085;
+  font-size: 0.875rem;
+  margin-bottom: 2rem;
+}
+
+/* Layout vertical do formulário */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Estrutura de cada grupo de campo */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/* Rótulos de entrada (Labels) */
+label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #344054;
+}
+
+/* Inputs de texto, e-mail, data e telefone */
+input {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  font-size: 0.95rem;
+  color: #101828;
+  background-color: #ffffff;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Efeito ao focar no campo */
+input:focus {
+  outline: none;
+  border-color: #444ce7;
+  box-shadow: 0 0 0 4px rgba(68, 76, 231, 0.12);
+}
+
+/* Placeholder */
+input::placeholder {
+  color: #98a2b3;
+}
+
+/* Mensagens de validação e erros */
+.erro {
+  color: #d92d20;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Borda vermelha em inputs inválidos tocados */
+input.ng-invalid.ng-touched {
+  border-color: #fda29b;
+  background-color: #fffbfa;
+}
+
+input.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 4px rgba(217, 45, 32, 0.12);
+}
+
+/* Botão Corporativo de Ação Primária */
+button {
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  background-color: #444ce7;
+  color: #ffffff;
+  border: 1px solid #444ce7;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover no botão ativo */
+button:not(:disabled):hover {
+  background-color: #3538cd;
+  border-color: #3538cd;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(68, 76, 231, 0.2);
+}
+
+/* Clique no botão */
+button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+/* Botão desabilitado */
+button:disabled {
+  background-color: #f2f4f7;
+  color: #98a2b3;
+  border-color: #eaecf0;
+  cursor: not-allowed;
+  box-shadow: none;
+}

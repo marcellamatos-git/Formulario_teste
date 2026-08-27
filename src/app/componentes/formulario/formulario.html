@@ -1,0 +1,65 @@
+<div class="container">
+    <h2>Formulário de Cadastro</h2>
+  
+    <!-- Vincula o objeto do TypeScript com [formGroup] e aciona onSubmit() no envio -->
+    <form [formGroup]="meuFormulario" (ngSubmit)="onSubmit()">
+      
+      <!-- Campo: Nome Completo -->
+      <div class="campo">
+        <label for="nome">Nome Completo</label>
+        <input id="nome" type="text" formControlName="nome" placeholder="Digite seu nome" />
+        
+        <!-- Exibe aviso se o campo foi tocado e possui erro de validação -->
+        @if (f['nome'].touched && f['nome'].invalid) {
+          <small class="erro">Digite seu nome (mínimo 10 caracteres).</small>
+        }
+      </div>
+  
+      <!-- Campo: E-mail -->
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" formControlName="email" placeholder="seu@email.com" />
+        
+        @if (f['email'].touched && f['email'].invalid) {
+          <small class="erro">Informe um e-mail válido.</small>
+        }
+      </div>
+  
+      <!-- Campo: CPF -->
+      <div class="campo">
+        <label for="cpf">CPF (somente números)</label>
+        <input id="cpf" type="text" formControlName="cpf" placeholder="000.000.000-00" maxlength="14" />
+        
+        @if (f['cpf'].touched && f['cpf'].invalid) {
+          <small class="erro">Informe um CPF válido com 11 dígitos.</small>
+        }
+      </div>
+  
+      <!-- Campo: Telefone -->
+      <div class="campo">
+        <label for="telefone">Telefone / WhatsApp</label>
+        <input id="telefone" type="tel" formControlName="telefone" placeholder="99 99999 9999" maxlength="11" />
+        
+        @if (f['telefone'].touched && f['telefone'].invalid) {
+          <small class="erro">Informe o telefone com DDD (10 ou 11 dígitos).</small>
+        }
+      </div>
+  
+      <!-- Campo: Data de Nascimento -->
+      <div class="campo">
+        <label for="dataNascimento">Data de Nascimento</label>
+        <input id="dataNascimento" type="date" formControlName="dataNascimento" />
+        
+        @if (f['dataNascimento'].touched && f['dataNascimento'].invalid) {
+          <small class="erro">
+            @if (f['dataNascimento'].hasError('required')) { Data é obrigatória. }
+            @if (f['dataNascimento'].hasError('dataFutura')) { A data não pode ser futura. }
+          </small>
+        }
+      </div>
+  
+      <!-- O botão é desabilitado automaticamente enquanto o formulário for inválido -->
+      <button type="submit" [disabled]="meuFormulario.invalid">Cadastrar</button>
+  
+    </form>
+  </div>
