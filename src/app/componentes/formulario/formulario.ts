@@ -41,7 +41,7 @@ export class FormularioComponent implements OnInit {
         [
           Validators.required, 
           Validators.pattern(/^\d{11}$|^(\d{3}\.){2}\d{3}-\d{2}$/), 
-          this.validarCPF
+        
         ]
       ],
       
@@ -58,41 +58,6 @@ export class FormularioComponent implements OnInit {
     return this.meuFormulario.controls;
   }
 
-  /* 
-    Função de validação customizada para CPF
-    Retorna "null" se for válido, ou um objeto de erro "{ cpfInvalido: true }" se for inválido
-  */
-  validarCPF(control: AbstractControl): ValidationErrors | null {
-    const cpf = control.value ? control.value.replace(/\D/g, '') : '';
-    if (!cpf) return null;
-
-    /* Verifica se tem 11 dígitos ou se são números repetidos (ex: 111.111.111-11) */
-    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
-      return { cpfInvalido: true };
-    }
-
-    /* Cálculo do 1º dígito verificador do CPF */
-    let soma = 0;
-    let resto;
-    for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(cpf.substring(9, 10))) return { cpfInvalido: true };
-
-    /* Cálculo do 2º dígito verificador do CPF */
-    soma = 0;
-    for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
-    resto = (soma * 10) % 11;
-    if (resto === 10 || resto === 11) resto = 0;
-    if (resto !== parseInt(cpf.substring(10, 11))) return { cpfInvalido: true };
-
-    return null; /* CPF Válido */
-  }
-
-  /* 
-    Função de validação customizada para Data de Nascimento
-    Impede que o usuário selecione uma data no futuro
-  */
   validarDataNascimento(control: AbstractControl): ValidationErrors | null {
     if (!control.value) return null;
     const dataDigitada = new Date(control.value);
